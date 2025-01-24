@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 14/03/2014, 10:04:41
-    Author     : Leandro
+Document   : index
+Created on : 14/03/2014, 10:04:41
+Author     : Leandro
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,18 +22,28 @@
                         <img src="image/imagem1.png" alt>
                     </div>
                     <div class="divlogin font">
-                        <form action="inicial/principal.jsp" method="post" id="login">
+                        
+
+                        <form action="validate" method="post" id="login">
                             <p> 
                                 <label>Usuário: </label>
-                                <input type="text" id="usuario" name="usuario" class="teste" >
+                                <input type="text" id="usuario" name="usuario" class="teste" 
+                                value="<%= request.getParameter("usuario") != null ? request.getParameter("usuario") : "" %>">
+                                <% if (request.getAttribute("errorUsuario") != null) { %>
+                                <span style="color: red;"><%= request.getAttribute("errorUsuario") %></span>
+                            <% } %>
                             </p>
                             <p> <label> Senha: </label>
                                 <input type="text" id="senha" name="senha" class="teste" >
+                                <% if (request.getAttribute("errorSenha") != null) { %>
+                                <span style="color: red;"><%= request.getAttribute("errorSenha") %></span>
+                            <% } %>
                             </p>
                             <p class="hoverButton">
                                 <input type="submit" value="Entrar" name="Entrar" class="btStyle cursor" />
                             </p>
                         </form>
+
                     </div>
                 </div>
             </div>
